@@ -1,3 +1,4 @@
+const playAgain = document.querySelector(".playAgain");
 var board = {
   width: 800,
   height: 650,
@@ -65,6 +66,14 @@ playerRef.style.top = player.y_position + "px";
 playerRef.style.width = player.width + "px";
 playerRef.style.height = player.height + "px";
 
+playAgain.addEventListener("click", () => {
+  player.x_position = 0;
+  player.y_position = 0;
+  playerRef.style.left = player.x_position + "px";
+  playerRef.style.top = player.y_position + "px";
+  playAgain.parentElement.style.display = "none";
+});
+
 document.onkeydown = function (event) {
   if (
     event.key == "ArrowRight" &&
@@ -97,7 +106,7 @@ document.onkeydown = function (event) {
     }
   }
   if (player.x_position === 550 && player.y_position == 600) {
-    alert(1);
+    playAgain.parentElement.style.display = "flex";
   }
   if (event.key == "ArrowUp" && player.y_position > 0) {
     player.y_position -= 50;
